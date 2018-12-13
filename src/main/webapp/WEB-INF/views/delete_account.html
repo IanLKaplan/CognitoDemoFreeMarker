@@ -1,0 +1,49 @@
+
+<html>
+<head>
+<#include  "fragments/head_includes.html">
+</head>
+<title>Delete Your Account</title>
+<body>
+<div class="container">
+    <div style="padding-top: 1em;"></div>
+    <#include "fragments/title.html">
+    <div style="padding-top: 1em;"></div>
+    <div class="row">
+		<div class="col-md-12">
+	 		<h2 align="center">Delete your account</h2>
+		</div>
+	</div> <!-- row -->
+    <form action="/delete_account_form" method="post">
+    <!-- Password -->
+    <#if password_error?? && (password_error?length > 0)>
+    <div class="form-group row">
+		<div class="col-sm-4"></div>
+			<span class="inputError">${password_error}</span>
+			<div class="col-sm-8"></div>
+		</div>
+	</#if>
+	<div class="form-group row">
+		<label for="password" class="col-sm-2 col-form-label">Password:</label>
+		<div class="col-sm-6">
+			<input type="password" id="password" name="password" placeholder="Password">
+		</div> <!-- col-sm-6 -->
+		<div class="col-sm-4"></div>
+	</div> <!--  form-group row -->
+	<!--  form-group row -->
+	<div class="form-group row">
+		<div class="col-sm-2"></div>
+	    <div class="col-sm-6">
+	        <span>
+			    <button type="submit" class="btn btn-primary">Delete My Account</button>
+			</span>
+			<span>
+				<a href="/application" id="cancel" name="cancel" class="btn btn-primary">Cancel</a>
+			</span>
+		</div>
+		<div class="col-sm-4"></div>
+	</div>
+    </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,117 @@
+
+<html>
+<head>
+<#include  "fragments/head_includes.html">
+</head>
+<title>Cognito Demo Application Login</title>
+
+<body>
+	<div class="container">
+		<div style="padding-top: 1em;"></div>
+		<#include "fragments/title.html">
+		<div style="padding-top: 1em;"></div>
+		<div class="row">
+		    <div class="col-md-12">
+			    <img src="/img/snowy_egret_thumb.jpg" />
+		    </div>
+	    </div> <!-- row -->
+		<div class="row">
+			<div class="col-md-2"></div>
+			<div class="col-md-8">
+				<h3 align="center">Application Login</h3>
+			</div>
+		</div>
+		<div style="padding-top: 1em;"></div>
+		<#if login_error?? && (login_error?length > 0)>
+		<div class="row">
+			<div class="col-md-2"></div>
+				<div class="col-md-8">
+					<div class="box inputError">${login_error}</div>
+			</div>
+			<div class="col-md-2"></div>
+		</div>
+		</#if>
+		<#if login_message?? && (login_message?length > 0)>
+		<div class="row">
+			<div class="col-md-2"></div>
+				<div class="col-md-8">
+					<div class="box">${login_message}</div>
+			</div>
+			<div class="col-md-2"></div>
+		</div>
+		</#if>
+		<div style="padding-top: 1em;"></div>
+		<div class="col-md-12">
+		<!-- Post to the login form -->
+		<form action="/login_form" method="post">
+	        <!-- User Name -->
+	        <#if user_name_error?? && (user_name_error?length > 0)>
+			    <div class="form-group row">
+					<div class="col-sm-4"></div>
+					<div class="col-sm-8">
+						<span class="inputError">${user_name_error}</span>
+                    </div>
+				</div>
+			</#if>
+			<div class="form-group row">
+				<label for="title" class="col-sm-4 col-form-label">User name:</label>
+				<!--  if the user name is OK, fill it in so the user doesn't have to keep retyping it if, for
+			          example, the password and the duplicate password don't match. -->
+			    <div class="col-sm-8">
+			       <#if user_name_val?? && (user_name_val?length > 0)>
+			       <input type="text" id="user_name" name="user_name" value=${user_name_val}>
+			       <#else>
+					<input type="text" id="user_name" name="user_name" placeholder="User name">
+					</#if>
+				</div>
+			</div> <!--  form-group row -->
+			<!-- Password -->
+			<#if password_error?? && (password_error?length > 0)>
+			 <div class="form-group row">
+				<div class="col-sm-4"></div>
+					<span class="inputError">${password_error}</span>
+					<div class="col-sm-8"></div>
+ 			  </div>
+			</#if>
+			<div class="form-group row">
+				<label for="password" class="col-sm-4 col-form-label">Password:</label>
+				<div class="col-sm-8">
+					<input type="password" id="password" name="password" placeholder="Password">
+				</div> <!-- col-sm-8 -->
+			</div> <!--  form-group row -->
+			<!--  form-group row -->
+			<div class="form-group row">
+				<div class="col-sm-4"></div>
+			    <div class="col-sm-8">
+					<button type="submit" class="btn btn-primary">Login</button>
+				</div>
+			</div>
+			</form>
+		</div> <!-- row -->
+	<div class="row">
+		<div class="col-md-2"></div>
+		<div class="col-md-8">
+			<a href="/create_user">Create an account</a>
+		</div>
+	</div> <!-- row -->		
+	<div class="row">
+		<div class="col-md-2"></div>
+		<div class="col-md-8">
+			<a href="/username_lookup">Lookup User Name</a>
+		</div>
+	</div> <!-- row -->
+	<div class="row">
+		<div class="col-md-2"></div>
+		<div class="col-md-8">
+			<a href="/forgot_password">Forgotten password</a>
+		</div>
+	</div> <!-- row -->
+	<div class="row">
+		<div class="col-md-2"></div>
+		<div class="col-md-8">
+			<a href="/reset_password">Reset forgotten password with emailed code</a>
+	</div>
+	</div> <!-- row -->
+	</div> <!-- container -->
+</body>
+</html>

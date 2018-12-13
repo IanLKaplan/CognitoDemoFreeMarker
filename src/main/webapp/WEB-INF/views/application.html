@@ -1,0 +1,50 @@
+<html>
+<head>
+<#include  "fragments/head_includes.html">
+</head>
+<title>Application</title>
+
+<body>
+<div class="container">
+<div style="padding-top: 1em;"></div>
+<#include "fragments/title.html">
+<div style="padding-top: 1em;"></div>
+    <#if user_info?? && (user_info?length > 0)> <!--  user_info != null -->
+	    <div class="row">
+			<div class="col-md-12">
+		 		<h2 align="center">Hi ${user_info.getUserName()}, you are now logged into your application</h2>
+			</div>
+		</div> <!-- row -->
+		<div class="row">
+			<div class="col-md-2"></div>
+			<div class="col-md-10">
+			  <h4>Profile information</h4>
+			  <div>Email: ${user_info.getEmailAddr() }</div>
+			  <div>Location: ${user_info.getLocation() }</div>
+	        </div>
+	    </div>
+	</#if>
+
+	<div style="padding-top: 1em;"></div>
+	<div class="row">
+		<div class="col-md-2"></div>
+		<div class="col-md-10">
+		   <ul>
+		   	  <li><a href="/change_password">Change your password</a></li>
+		   	  <li><a href="/change_email">Change your email address</a></li>
+		      <li><a href="/change_profile">Change your profile information</a></li>
+		      <li><a href="/delete_account">Delete your account</a></li>
+		   </ul>
+		</div>
+	</div>
+	<form  action="/logout_form" method="post">
+		<div class="form-group row">
+				<div class="col-sm-2"></div>
+				<div class="col-sm-10">
+					<button type="submit" class="btn btn-primary">Logout</button>
+				</div>
+		</div>
+	</form>
+</div>
+</body>
+</html>

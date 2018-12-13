@@ -1,0 +1,54 @@
+
+<html>
+<head>
+<#include  "fragments/head_includes.html">
+</head>
+<title>Change Profile Information</title>
+<body>
+<div class="container">
+   <div style="padding-top: 1em;"></div>
+   <#include "fragments/title.html">
+   <div style="padding-top: 1em;"></div>
+    <div class="row">
+		<div class="col-md-12">
+	 		<h2 align="center">Change Profile Information</h2>
+		</div>
+	</div> <!-- row -->
+	<div style="padding-top: 1em;"></div>
+	<form action="/change_profile_form" method="post">
+		<!-- Location -->
+		<#if location_error?? && (location_error?length > 0)>
+			<div class="form-group row">
+		   	   <div class="col-sm-4"></div>
+		   	   <div class="col-sm-8">
+		   	   	   <span class="inputError">${location_error}</span>
+		       </div>
+		   </div>
+	    </#if>
+		<div class="form-group row">
+			<label for="location" class="col-sm-4 col-form-label">Location</label>
+			<select class="custom-select col-sm-8" name="location" id="location">
+      				<option selected><span>${user_info.getLocation()}</span></option>
+      				<option value="Bonaire">Bonaire</option>
+      				<option value="Aruba">Aruba</option>
+      			    <option value="Curacao">Curacao</option>
+      			    <option value="Trinidad">Trinidad</option>
+      			    <option value="Tobago">Tobago</option>
+      			    <option value="Grenada">Grenada</option>
+    		</select> <!-- col-sm-8 -->
+		</div> <!-- form-group row -->
+		<div class="form-group row">
+				<div class="col-sm-4"></div>
+				<div class="col-sm-8">
+				    <span>
+					   <button type="submit" class="btn btn-primary">Update</button>
+					</span>
+					<span>
+					    <a href="/application" id="cancel" name="cancel" class="btn btn-primary">Cancel</a>
+					</span>
+				</div>
+		</div>
+	</form>
+</div> <!--  container  -->
+</body>
+</html>

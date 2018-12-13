@@ -1,0 +1,112 @@
+
+<htm>
+<head>
+<#include  "fragments/head_includes.html">
+</head>
+
+<title>New User</title>
+<body>
+<!--
+   Create user form 
+ -->
+<div class="container">
+    <div style="padding-top: 1em;"></div>
+    <#include "fragments/title.html">
+   <div style="padding-top: 1em;"></div>
+    <div class="row">
+		<div class="col-md-12">
+	 		<h2 align="center">Create a new user account</h2>
+		</div>
+	</div> <!-- row -->
+    <div class="row">
+    	<div class="col-md-2"></div>
+		<div class="col-md-10">
+		An email with an account creation code will be sent to your email address.
+		</div>
+	</div>
+	<div style="padding-top: 1em;"></div>
+	<#if createUserError?? && (createUserError?length > 0)>
+	    <div class="row">
+			<div class="col-md-2"></div>
+			<div class="col-md-8">
+				<div class="inputError">${createUserError}</div>
+			</div>
+			<div class="col-md-2"></div>
+		</div>
+	</#if>
+	<div class="row">
+	<div class="col-md-12">
+	<!-- Post to the login controller -->
+			<form action="/create_user_form" method="post">
+			    <#if userNameError??  && (userNameError?length > 0)>
+			    	<div class="form-group row">
+				   	   <div class="col-sm-4"></div>
+				   	   	<div class="col-sm-8">
+				   	   	   <span class="inputError">${userNameError}</span>
+				        </div>
+				    </div>
+			    </#if>
+				<div class="form-group row">
+					<label for="title" class="col-sm-4 col-form-label">User name:</label>
+					<div class="col-sm-8">
+						<!--  if the user name is OK, fill it in so the user doesn't have to keep retyping it if, for
+						      example, the password and the duplicate password don't match. -->
+						<#if userNameVal?? && (userNameVal?length > 0)>
+						     <input type="text" id="user_name" name="user_name" value=${userNameVal}>
+						<#else>
+						     <input type="text" id="user_name" name="user_name" placeholder="User name">
+						</#if>
+					</div> <!-- col-md-8 -->
+				</div> <!--  form-group row -->
+				<#if emailError?? && (emailError?length > 0)>
+				    <div class="form-group row">
+				   	   <div class="col-sm-4"></div>
+				   	   <div class="col-sm-8">
+				   	   	   <span class="inputError">${emailError}</span>
+				       </div>
+				    </div>
+				</#if>
+				<div class="form-group row">
+					<label for="title" class="col-sm-4 col-form-label">Email:</label>
+					<div class="col-sm-8">
+						<input type="text" id="email" name="email" placeholder="Email">
+					</div> <!-- col-sm-8 -->
+				</div> <!--  form-group row -->
+				<#if locationError?? && (locationError?length > 0)>
+					<div class="form-group row">
+				   	   <div class="col-sm-4"></div>
+				   	   	   <span class="inputError">${locationError}</span>
+				       <div class="col-sm-8">
+				       </div>
+				    </div>
+				</#if>
+				<div class="form-group row">
+					<label for="location" class="col-sm-4 col-form-label">Location</label>
+					<select class="custom-select col-sm-8" name="location" id="location">
+        				<option selected>Location</option>
+        				<option value="Bonaire">Bonaire</option>
+        				<option value="Aruba">Aruba</option>
+        			    <option value="Curacao">Curacao</option>
+        			    <option value="Trinidad">Trinidad</option>
+        			    <option value="Tobago">Tobago</option>
+        			    <option value="Grenada">Grenada</option>
+      				</select>
+					<!-- col-sm-8 -->
+				</div> <!-- form-group row -->
+				<div class="form-group row">
+					<div class="col-sm-4"></div>
+					<div class="col-sm-8">
+					    <span>
+						    <button type="submit" class="btn btn-primary">Create User</button>
+						</span>
+						<span>
+					       <a href="/application" id="cancel" name="cancel" class="btn btn-primary">Cancel</a>
+					    </span>
+					</div>
+				</div>
+				</form>
+			</div> <!-- col-md-12 -->
+		</div> <!-- row -->
+</div> <!-- container -->
+</body>
+</html>
