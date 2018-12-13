@@ -1,0 +1,48 @@
+<html>
+<head>
+<#include  "fragments/head_includes.html">
+</head>
+<title>User Name Lookup</title>
+<body>
+<div class="container">
+    <div style="padding-top: 1em;"></div>
+    <#include "fragments/title.html">
+    <div style="padding-top: 1em;"></div>
+    <div class="row">
+		<div class="col-md-12">
+	 		<h2 align="center">User Name Lookup</h2>
+		</div>
+	</div> <!-- row -->
+	<div style="padding-top: 1em;"></div>
+	 <!-- Post to the login form -->
+		<form action="/username_lookup_form" method="post">
+		    <!-- User Name -->
+		    <#if email_error?? && (email_error?length > 0)>
+				<div class="form-group row">
+					<div class="col-sm-4"></div>
+					<div class="col-sm-8">
+						<span class="inputError">${email_error}</span>
+					</div>
+				</div>
+			</#if>
+			<div class="form-group row">
+				<label for="title" class="col-sm-4 col-form-label">Email address:</label>
+				<div class="col-sm-8">
+						<input type="email" id="email_address" name="email_address" placeholder="Your Email Address">
+				</div> <!-- col-md-8 -->
+			</div> <!--  row -->
+			<div class="form-group row">
+				<div class="col-sm-4"></div>
+				<div class="col-sm-8">
+				    <span>
+					    <button type="submit" class="btn btn-primary">Lookup User Name</button>
+					</span>
+					<span>
+						<a href="/" id="cancel" name="cancel" class="btn btn-primary">Cancel</a>
+					</span>
+				</div>
+			</div>
+	   </form>
+</div> <!-- container -->
+</body>
+</html>
